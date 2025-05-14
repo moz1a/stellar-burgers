@@ -35,3 +35,9 @@
   align-items: center;
   margin: 0 auto;
 }
+
+.link_header {
+  display: 'flex';
+  color: 'white';
+  text-decoration: 'initial';
+}

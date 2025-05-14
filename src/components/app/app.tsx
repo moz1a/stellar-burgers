@@ -13,12 +13,22 @@ import '../../index.css';
 import styles from './app.module.css';
 
 import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
-const App = () => (
-  <div className={styles.app}>
-    <BrowserRouter>
+import { useDispatch } from '../../services/store';
+import { useEffect } from 'react';
+import { fetchIngredients } from '../../services/slices/ingredientsSlice';
+
+const App = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchIngredients());
+  }, []);
+
+  return (
+    <div className={styles.app}>
       <AppHeader />
       <Routes>
         <Route path='/' element={<ConstructorPage />} />
@@ -55,26 +65,33 @@ const App = () => (
               <Profile />
             </PrivateRoute>
           }
-        >
-          <Route path='orders' element={<ProfileOrders />}>
-            <Route
-              path=':number'
-              element={
-                <Modal
-                  title='Номер заказа'
-                  onClose={() => window.history.back()}
-                >
-                  <OrderInfo />
-                </Modal>
-              }
-            />
-          </Route>
-        </Route>
+        />
+        <Route
+          path='profile/orders'
+          element={
+            <PrivateRoute>
+              <ProfileOrders />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/profile/orders/:number'
+          element={
+            <PrivateRoute>
+              <Modal
+                title='Информация о заказе'
+                onClose={() => navigate('/profile/orders')}
+              >
+                <OrderInfo />
+              </Modal>
+            </PrivateRoute>
+          }
+        />
 
         <Route path='*' element={<NotFound404 />} />
       </Routes>
-    </BrowserRouter>
-  </div>
-);
+    </div>
+  );
+};
 
 export default App;
