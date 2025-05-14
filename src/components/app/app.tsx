@@ -36,7 +36,7 @@ const App = () => {
         <Route
           path='/feed/:number'
           element={
-            <Modal title='Номер' onClose={() => window.history.back()}>
+            <Modal title='Номер' onClose={() => navigate('/')}>
               <OrderInfo />
             </Modal>
           }
@@ -45,7 +45,7 @@ const App = () => {
         <Route
           path='/ingredients/:id'
           element={
-            <Modal title='Ингредиенты' onClose={() => window.history.back()}>
+            <Modal title='Ингредиенты' onClose={() => navigate('/')}>
               <IngredientDetails />
             </Modal>
           }
@@ -87,7 +87,6 @@ const App = () => {
             </PrivateRoute>
           }
         />
-
         <Route path='*' element={<NotFound404 />} />
       </Routes>
     </div>
