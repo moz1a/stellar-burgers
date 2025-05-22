@@ -1,0 +1,9 @@
+{
+    "success": true,
+    "accessToken": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MmUxNjE5YzJmMzBjMDAxY2IyNWY4MyIsImlhdCI6MTc0NzkwODY4OSwiZXhwIjoxNzQ3OTA5ODg5fQ.sBULkDZmdGxBZU6l4NjqmzifnuugmYyMROGlJr2YbnY",
+    "refreshToken": "0950d9b5fbf10379b09fe6474dffc8e0bd7fed3d249cc683aafab001772bf538a8c4e331778a0981",
+    "user": {
+        "email": "mozia@gmail.com",
+        "name": "Игорь"
+    }
+}
