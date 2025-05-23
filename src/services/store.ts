@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   orders: ordersReducer,
   profile: profileReducer,
   burgerConstructor: burgerConstructorSlice
-}); // Заменить на импорт настоящего редьюсера
+});
 
 const store = configureStore({
   reducer: rootReducer,
